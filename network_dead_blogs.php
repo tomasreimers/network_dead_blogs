@@ -27,7 +27,7 @@ class Network_dead_blogs {
                 header("Expires: 0");
                 // get blogs
                 $blogs = $wpdb->get_results(
-                    $wpdb->prepare("SELECT blog_id, spam, archived, deleted, (TIMESTAMPDIFF(DAY, registered, NOW()) > 365 AND last_updated = 0) as not_updated FROM " . $wpdb->base_prefix . "blogs WHERE spam = 1 OR deleted = 1 OR archived = '1' OR (TIMESTAMPDIFF(DAY, registered, NOW()) > 365 AND last_updated = 0)", array()),
+                    $wpdb->prepare("SELECT blog_id, spam, archived, deleted, (TIMESTAMPDIFF(DAY, registered, NOW()) > 60 AND last_updated = 0) as not_updated FROM " . $wpdb->base_prefix . "blogs WHERE spam = 1 OR deleted = 1 OR archived = '1' OR (TIMESTAMPDIFF(DAY, registered, NOW()) > 365 AND last_updated = 0)", array()),
                     ARRAY_A
                 );
                 // render header
